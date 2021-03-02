@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Computer",
+      "price": 1200,
+      "quantity": 65,
+      "available": true,
+      "selected": true
+    },
+    {
+      "name": "Printer",
+      "price": 80,
+      "quantity": 135,
+      "selected": true,
+      "available": true,
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Smartphone",
+      "price": 900,
+      "quantity": 55,
+      "available": true,
+      "selected": true
+    },
+    {
+      "name": "TV",
+      "price": "550",
+      "quantity": "25",
+      "selected": true,
+      "available": true,
+      "id": 4
+    },
+    {
+      "name": "AirPods",
+      "price": "179",
+      "quantity": "320",
+      "selected": true,
+      "available": true,
+      "id": 5
+    }
+  ]
+}
