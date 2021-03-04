@@ -35,4 +35,8 @@ export class ProductAddComponent implements OnInit {
     }
   }
 
+  cancelPage(){
+    this.router.navigateByUrl("/products");
+  }
+
 }

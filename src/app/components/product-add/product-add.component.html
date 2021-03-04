@@ -23,6 +23,7 @@
             <label>Available</label>
             <input type="checkbox" formControlName="available" class="form-check" [ngClass]="{'is-invalid': submitted && productFormGroup.controls.available.errors}">
         </div>
-        <button class="btn btn-success" (click)="saveProduct()">Save</button>
+        <button class="btn btn-success ml-2" (click)="saveProduct()">Save</button>
+        <button class="btn btn-danger ml-2" (click)="cancelPage()">Cancel</button>
     </form>
 </div>

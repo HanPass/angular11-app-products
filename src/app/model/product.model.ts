@@ -18,3 +18,19 @@ export interface AppDataState<T> {
     data?:T,
     errorMessage?:string
 }
+
+export enum ProductActions {
+  ALL_PRODUCTS = "[Product] Get all products",
+  SELECTED_PRODUCTS = "[Product] Get Selected products",
+  AVAILABLE_PRODUCTS = "[Product] Get available products",
+  SEARCH_PRODUCT = "[Product] Search product",
+  ADD_PRODUCT = "[Product] add product",
+  CHANGE_SELECT_PRODUCT = "[Product] change select product",
+  EDIT_PRODUCT="[Product] edit product",
+  DELETE_PRODUCT="[Product] delete product"
+}
+
+export interface ActionEvent {
+  type:ProductActions,
+  payload?:any
+}

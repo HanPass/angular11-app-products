@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
-import { Product, AppDataState, DataStateEnum } from 'src/app/model/product.model';
+import { Product, AppDataState, DataStateEnum, ProductActions, ActionEvent } from 'src/app/model/product.model';
 import { Observable, of } from 'rxjs';
 import { catchError, map, startWith } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import * as EventEmitter from 'events';
 
 @Component({
   selector: 'app-products',
@@ -70,39 +71,21 @@ export class ProductsComponent implements OnInit {
   }
 
   editProduct(p:Product){
-
-  this.router.navigateByUrl("/editProduct/"+p.id);
-
+    this.router.navigateByUrl("/editProduct/"+p.id);
   }
 
-  // fetchAllProducts(){
-  //   console.log("wsselt fetchAllProducts");
-  //   this.productsService.getAllProducts().subscribe(data => {
-  //     this.products = data;
-  //   },
-  //   err => {
-  //     console.log(err);
-  //   });
-  // }
-
-  // fetchSelectedProducts(){
-  //   console.log("wsselt fetchSelectedProducts");
-  //   this.productsService.getSelectedProducts().subscribe(data => {
-  //     this.products = data;
-  //   },
-  //   err => {
-  //     console.log(err);
-  //   });
-  // }
-
-  // fetchAvailableProducts(){
-  //   console.log("wsselt fetchAvailableProducts");
-  //   this.productsService.getAvailableProducts().subscribe(data => {
-  //     this.products = data;
-  //   },
-  //   err => {
-  //     console.log(err);
-  //   });
-  // }
+  callMyEvent($event:ActionEvent){
+    switch($event.type){
+      case ProductActions.ALL_PRODUCTS: this.fetchAllProducts();break;
+      case ProductActions.SELECTED_PRODUCTS: this.fetchSelectedProducts();break;
+      case ProductActions.AVAILABLE_PRODUCTS: this.fetchAvailableProducts();break;
+      case ProductActions.SEARCH_PRODUCT: this.onSearch($event.payload);break;
+      case ProductActions.ADD_PRODUCT: this.addProduct();break;
+      case ProductActions.EDIT_PRODUCT: this.editProduct($event.payload);break;
+      case ProductActions.DELETE_PRODUCT: this.deleteProduct($event.payload);break;
+      case ProductActions.CHANGE_SELECT_PRODUCT: this.onSelectChange($event.payload);break;
+      default:
+    }
+  }
 
 }
