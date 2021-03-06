@@ -15,7 +15,7 @@
               <tr>
                   <th>ID</th><th>Name</th><th>Price</th><th>Quantity</th><th>Selected</th><th>Available</th>
               </tr>
-              <app-product-item *ngFor="let p of result.data" [products$]="p" (productEventEmiiter)="callMyEvent($event)"
+              <app-product-item *ngFor="let p of result.data" [products$]="p"
               style="display:contents"></app-product-item>
           </table>
       </ng-container>
