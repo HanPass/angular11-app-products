@@ -78,6 +78,16 @@ export class ProductsComponent implements OnInit {
     this.router.navigateByUrl("/editProduct/"+p.id);
   }
 
+  productAdded(){
+    alert("New product added successfully");
+    this.router.navigateByUrl("/products");
+  }
+
+  productEdited(){
+    alert("Product edited successfully!");
+    this.router.navigateByUrl("/products");
+  }
+
   callMyEvent($event:ActionEvent){
     switch($event.type){
       case ProductActions.ALL_PRODUCTS: this.fetchAllProducts();break;
@@ -88,6 +98,8 @@ export class ProductsComponent implements OnInit {
       case ProductActions.EDIT_PRODUCT: this.editProduct($event.payload);break;
       case ProductActions.DELETE_PRODUCT: this.deleteProduct($event.payload);break;
       case ProductActions.CHANGE_SELECT_PRODUCT: this.onSelectChange($event.payload);break;
+      case ProductActions.PRODUCT_ADDED: this.productAdded();break;
+      case ProductActions.PRODUCT_EDITED: this.productEdited();break;
       default:
     }
   }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProductsService } from 'src/app/services/products.service';
 import { Router } from '@angular/router';
+import { EventDriverService } from 'src/app/model/event.driver.service';
+import { ProductActions } from 'src/app/model/product.model';
 
 @Component({
   selector: 'app-product-add',
@@ -13,7 +15,7 @@ export class ProductAddComponent implements OnInit {
   productFormGroup?:FormGroup;
   submitted:boolean = false;
 
-  constructor(private fb:FormBuilder, private productService:ProductsService, private router:Router) { }
+  constructor(private fb:FormBuilder, private productService:ProductsService, private router:Router, private eventDriverService:EventDriverService) { }
 
   ngOnInit(): void {
     this.productFormGroup = this.fb.group({
@@ -29,8 +31,7 @@ export class ProductAddComponent implements OnInit {
     this.submitted = true;
     if(this.productFormGroup.valid){
       this.productService.addProduct(this.productFormGroup.value).subscribe(data => {
-        alert("New product added successfully");
-        this.router.navigateByUrl("/products");
+        this.eventDriverService.publishEvent({type:ProductActions.PRODUCT_ADDED});
       });
     }
   }

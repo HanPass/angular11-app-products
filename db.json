@@ -31,6 +31,22 @@
       "selected": true,
       "available": true,
       "id": 4
+    },
+    {
+      "name": "AirPods",
+      "price": "179",
+      "quantity": "329",
+      "selected": true,
+      "available": false,
+      "id": 5
+    },
+    {
+      "name": "Thinkpad",
+      "price": "900",
+      "quantity": "147",
+      "selected": false,
+      "available": true,
+      "id": 6
     }
   ]
 }
